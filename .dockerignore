@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Node
+node_modules
+
+#Docker
+Dockerfile
+.dockerignore
+
+# Environments
+.env*
+
+# GitHub
+README.md
+
+# Linting and Formatting
+eslint.config.mjs
+.prettierrc
+
+# Build
+dist
