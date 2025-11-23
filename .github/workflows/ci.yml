@@ -46,10 +46,24 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2.0.1
 
-      - name: Build and push docker image
+      - name: Build and push docker image 
+        id: build-and-push-image
         env: 
           REGISTRY: ${{ steps.login-ecr.outputs.registry}}
           TAG: ${{ steps.generate_tag.outputs.sha }}
         run: |
           docker build -t ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }} .
           docker push ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }}
+          IMAGE=$(echo ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }})
+          echo "image=$IMAGE" >> $GITHUB_OUTPUT
+          
+      - name: Deploy to AWS App Runner
+        uses: awslabs/amazon-app-runner-deploy@main
+        with:
+          service: devops-nest-api
+          image: ${{ steps.build-and-push-image.outputs.image }}
+          access-role-arn: ${{ secrets.AWS_APP_RUNNER_ROLE }}
+          region: ${{ vars.AWS_REGION }}
+          cpu: 1
+          memory: 2
+          port: 3000
