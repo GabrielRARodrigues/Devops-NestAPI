@@ -45,20 +45,11 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2.0.1
-      # - name: Login into the container registry
-      #   uses: docker/login-action@v3.6.0
-      #   with:
-      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # - name: Build and Push image
-      #   uses: docker/build-push-action@v6.18.0
-      #   with:
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-nest-api:${{ steps.generate_tag.outputs.sha }},${{ secrets.DOCKERHUB_USERNAME }}/devops-nest-api:latest
-
-      # - name: Build docker image
-      #   run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-nest-api:${{ steps.generate_tag.outputs.sha }} .
-
-      # - name: Push image to container registry
-      #   run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-nest-api:${{ steps.generate_tag.outputs.sha }}
+      - name: Build and push docker image
+        env: 
+          REGISTRY: ${{ steps.login-ecr.outputs.registry}}
+          TAG: ${{ steps.generate_tag.outputs.sha }}
+        run: |
+          docker build -t ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }} .
+          docker push ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }}
