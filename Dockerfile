@@ -7,7 +7,7 @@ COPY . ./
 RUN npm i
 RUN npm run build
 
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --only=production
 
 FROM node:22-alpine3.22 AS production
 
