@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/GabrielRARodrigues/Devops-NestAPI/compare/v1.0.2...v1.0.3) (2025-11-25)
+
+
+### Bug Fixes
+
+* fix ci ([9073bac](https://github.com/GabrielRARodrigues/Devops-NestAPI/commit/9073bac390be854488ab9dcd860b5867eabff51f))
+* fix permissions ([758de3f](https://github.com/GabrielRARodrigues/Devops-NestAPI/commit/758de3ff3e22715b279a89eb271b1e10486269c0))
+
 ## [1.0.2](https://github.com/GabrielRARodrigues/Devops-NestAPI/compare/v1.0.1...v1.0.2) (2025-11-25)
 
 
