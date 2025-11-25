@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/GabrielRARodrigues/Devops-NestAPI/compare/v1.0.1...v1.0.2) (2025-11-25)
+
+
+### Bug Fixes
+
+* fix dockerfile ([efa9e33](https://github.com/GabrielRARodrigues/Devops-NestAPI/commit/efa9e33470442e9f33bd933a20e292d058c9d5ab))
+
 ## [1.0.1](https://github.com/GabrielRARodrigues/Devops-NestAPI/compare/v1.0.0...v1.0.1) (2025-11-25)
 
 
