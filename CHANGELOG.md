@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/GabrielRARodrigues/Devops-NestAPI/compare/v1.0.3...v1.0.4) (2025-11-30)
+
+
+### Bug Fixes
+
+* fix ci variables ([f568f0b](https://github.com/GabrielRARodrigues/Devops-NestAPI/commit/f568f0bbf204354f363f1cfa94c5a275e0e67f9b))
+
 ## [1.0.3](https://github.com/GabrielRARodrigues/Devops-NestAPI/compare/v1.0.2...v1.0.3) (2025-11-25)
 
 
