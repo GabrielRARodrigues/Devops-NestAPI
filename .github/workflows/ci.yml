@@ -55,9 +55,8 @@ jobs:
           TAG: ${{ steps.generate_tag.outputs.sha }}
         run: |
           docker build -t ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }} .
-          docker push ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }}
           docker tag ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }} ${{ env.REGISTRY }}/devops-nest-api:latest
-          docker push ${{ env.REGISTRY }}/devops-nest-api:latest
+          docker push --all-tags ${{ env.REGISTRY }}/devops-nest-api
           IMAGE=$(echo ${{ env.REGISTRY }}/devops-nest-api:${{ env.TAG }})
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
@@ -65,7 +64,7 @@ jobs:
         id: deploy-to-app-runner
         uses: awslabs/amazon-app-runner-deploy@main
         with:
-          service: devops-nest-api
+          service: ${{ vars.SERVICE_NAME }}
           image: ${{ steps.build-and-push-image.outputs.image }}
           access-role-arn: ${{ secrets.AWS_APP_RUNNER_ROLE }}
           region: ${{ vars.AWS_REGION }}
